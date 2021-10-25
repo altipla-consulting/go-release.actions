@@ -23,6 +23,13 @@ async function run(): Promise<void> {
   let event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf-8')) as ReleaseCreatedEvent
 
   core.debug('Upload binary to GitHub release')
+  core.info(JSON.stringify({
+    method: 'POST',
+    url: event.release.upload_url.replace('{?name,label}', ''),
+    headers: { 'Content-Type': 'application/gzip' },
+    data: fs.readFileSync(name, 'binary').length,
+    name: `${name}_${event.release.tag_name}_linux_amd64`,
+  }))
   await octokit.request({
     method: 'POST',
     url: event.release.upload_url.replace('{?name,label}', ''),
