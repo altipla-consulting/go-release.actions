@@ -36,7 +36,7 @@ async function main(): Promise<void> {
   try {
     await run()
   } catch (err) {
-    core.setFailed(`Action failed with error: ${err}`);
+    core.setFailed(`Action failed with error: ${err}`)
   }
 }
 
