@@ -1,0 +1,17 @@
+
+name: Go release v1.14
+description: Release Go binaries built with v1.14.
+inputs:
+  source:
+    description: Source of the command to build.
+    required: true
+    default: .
+  name:
+    description: Name of the command to build.
+    required: true
+  token:
+    description: GITHUB_ACTIONS token.
+    required: true
+runs:
+  using: node12
+  main: dist/index.js
