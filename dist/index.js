@@ -9801,14 +9801,15 @@ async function run() {
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Upload binary to GitHub release');
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.info(JSON.stringify({
         method: 'POST',
-        url: event.release.upload_url.replace('{?name,label}', ''),
+        url: event.release.upload_url,
         headers: { 'Content-Type': 'application/gzip' },
         data: fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(name, 'binary').length,
         name: `${name}_${event.release.tag_name}_linux_amd64`,
     }));
     await octokit.request({
         method: 'POST',
-        url: event.release.upload_url.replace('{?name,label}', ''),
+        // url: event.release.upload_url.replace('{?name,label}', ''),
+        url: event.release.upload_url,
         headers: { 'Content-Type': 'application/gzip' },
         data: fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(name, 'binary'),
         name: `${name}_${event.release.tag_name}_linux_amd64`,
