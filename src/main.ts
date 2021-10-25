@@ -25,14 +25,15 @@ async function run(): Promise<void> {
   core.debug('Upload binary to GitHub release')
   core.info(JSON.stringify({
     method: 'POST',
-    url: event.release.upload_url.replace('{?name,label}', ''),
+    url: event.release.upload_url,
     headers: { 'Content-Type': 'application/gzip' },
     data: fs.readFileSync(name, 'binary').length,
     name: `${name}_${event.release.tag_name}_linux_amd64`,
   }))
   await octokit.request({
     method: 'POST',
-    url: event.release.upload_url.replace('{?name,label}', ''),
+    // url: event.release.upload_url.replace('{?name,label}', ''),
+    url: event.release.upload_url,
     headers: { 'Content-Type': 'application/gzip' },
     data: fs.readFileSync(name, 'binary'),
     name: `${name}_${event.release.tag_name}_linux_amd64`,
