@@ -1,7 +1,7 @@
 {
-  "name": "go-release-1.14.actions",
+  "name": "go-release.actions",
   "version": "0.1.7",
-  "description": "Release Go binaries built with v1.14.",
+  "description": "Release Go binaries as GitHub Release assets.",
   "main": "index.js",
   "scripts": {
     "lint": "tsc --noEmit && eslint --ext .ts src",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/altipla-consulting/go-release-1.14.actions.git"
+    "url": "git+https://github.com/altipla-consulting/go-release.actions.git"
   },
   "author": "Altipla Consulting",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/altipla-consulting/go-release-1.14.actions/issues"
+    "url": "https://github.com/altipla-consulting/go-release.actions/issues"
   },
-  "homepage": "https://github.com/altipla-consulting/go-release-1.14.actions#readme",
+  "homepage": "https://github.com/altipla-consulting/go-release.actions#readme",
   "devDependencies": {
     "@altipla/eslint-config-ts": "^0.3.0",
     "@types/node": "^16.11.5",

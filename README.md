@@ -1,4 +1,4 @@
 
-# go-release-1.14.actions
+# go-release.actions
 
-Release Go binaries built with v1.14.
+Release Go binaries as GitHub Release assets.
