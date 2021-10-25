@@ -22,14 +22,6 @@ async function run(): Promise<void> {
 
   let event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf-8')) as ReleaseCreatedEvent
 
-  octokit.rest.repos.uploadReleaseAsset({
-    owner: event.repository.owner.login,
-    repo: event.repository.name,
-    release_id: event.release.id,
-    name: event.release.tag_name,
-    data: '',
-  })
-
   core.debug('Upload binary to GitHub release')
   await octokit.request({
     method: 'POST',
