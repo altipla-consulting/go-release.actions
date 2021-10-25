@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "tsc --noEmit && eslint --ext .ts src",
     "fix": "eslint --fix --ext .ts src",
-    "prepublishOnly": "ncc build src/main.ts",
     "test": "",
     "build": "ncc build src/main.ts"
   },

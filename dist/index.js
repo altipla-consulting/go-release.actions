@@ -9798,14 +9798,14 @@ async function run() {
     await _actions_exec__WEBPACK_IMPORTED_MODULE_2__.exec('go', ['build', '-v', '-o', name, source]);
     let octokit = _actions_github__WEBPACK_IMPORTED_MODULE_3__.getOctokit(_actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('token'));
     let event = JSON.parse(fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf-8'));
-    octokit.rest.repos.uploadReleaseAsset({
-        owner: event.repository.owner.login,
-        repo: event.repository.name,
-        release_id: event.release.id,
-        name: event.release.tag_name,
-        data: '',
-    });
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug('Upload binary to GitHub release');
+    _actions_core__WEBPACK_IMPORTED_MODULE_1__.info(JSON.stringify({
+        method: 'POST',
+        url: event.release.upload_url.replace('{?name,label}', ''),
+        headers: { 'Content-Type': 'application/gzip' },
+        data: fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(name, 'binary').length,
+        name: `${name}_${event.release.tag_name}_linux_amd64`,
+    }));
     await octokit.request({
         method: 'POST',
         url: event.release.upload_url.replace('{?name,label}', ''),
