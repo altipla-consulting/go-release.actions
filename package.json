@@ -1,6 +1,6 @@
 {
   "name": "go-release.actions",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Release Go binaries as GitHub Release assets.",
   "main": "index.js",
   "scripts": {
