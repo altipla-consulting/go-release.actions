@@ -15,24 +15,16 @@ async function run(): Promise<void> {
 
   let name = core.getInput('name')
   let source = core.getInput('source')
-  core.debug(`Build Go source for ${name} from: ${source}`)
+  core.info(`* Build Go source for ${name} from: ${source}`)
   await exec.exec('go', ['build', '-v', '-o', name, source])
 
   let octokit = github.getOctokit(core.getInput('token'))
 
   let event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf-8')) as ReleaseCreatedEvent
 
-  core.debug('Upload binary to GitHub release')
-  core.info(JSON.stringify({
-    method: 'POST',
-    url: event.release.upload_url,
-    headers: { 'Content-Type': 'application/gzip' },
-    data: fs.readFileSync(name, 'binary').length,
-    name: `${name}_${event.release.tag_name}_linux_amd64`,
-  }))
+  core.info('* Upload binary to GitHub release')
   await octokit.request({
     method: 'POST',
-    // url: event.release.upload_url.replace('{?name,label}', ''),
     url: event.release.upload_url,
     headers: { 'Content-Type': 'application/gzip' },
     data: fs.readFileSync(name, 'binary'),
