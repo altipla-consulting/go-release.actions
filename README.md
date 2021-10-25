@@ -16,13 +16,16 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Checkout code
+      uses: actions/checkout@master
 
-    - uses: actions/setup-go@v2
+    - name: Configure Go
+      uses: actions/setup-go@v2
       with:
         go-version: 1.14.7
 
-    - uses: altipla-consulting/go-release.actions@main
+    - name: Release mytool
+      uses: altipla-consulting/go-release.actions@main
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         source: ./cmd/mytool
