@@ -28,7 +28,7 @@ async function run(): Promise<void> {
     repo: event.repository.name,
     release_id: event.release.id,
     name: `${name}_${event.release.tag_name}_linux_amd64`,
-    data: fs.readFileSync(name, 'binary'),
+    data: fs.readFileSync(name) as any,
   })
   // await octokit.request({
   //   method: 'POST',
