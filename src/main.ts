@@ -30,13 +30,6 @@ async function run(): Promise<void> {
     name: `${name}_${event.release.tag_name}_linux_amd64`,
     data: fs.readFileSync(name) as any,
   })
-  // await octokit.request({
-  //   method: 'POST',
-  //   url: event.release.upload_url,
-  //   headers: { 'Content-Type': 'application/octet-stream' },
-  //   data: fs.readFileSync(name, 'binary'),
-  //   name: `${name}_${event.release.tag_name}_linux_amd64`,
-  // })
 }
 
 async function main(): Promise<void> {
