@@ -16,13 +16,7 @@ async function run(): Promise<void> {
   let name = core.getInput('name')
   let source = core.getInput('source')
   core.info(`* Build Go source for ${name} from: ${source}`)
-  await exec.exec('go', ['build', '-v', '-o', name, source], {
-    env: {
-      ...process.env,
-      GOOS: 'linux',
-      GOARCH: 'amd64',
-    },
-  })
+  await exec.exec('go', ['build', '-v', '-o', name, source])
 
   let octokit = github.getOctokit(core.getInput('token'))
 
