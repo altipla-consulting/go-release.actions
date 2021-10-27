@@ -27,7 +27,7 @@ async function run(): Promise<void> {
     owner: event.repository.owner.login,
     repo: event.repository.name,
     release_id: event.release.id,
-    name: `${name}_${event.release.tag_name}_linux_amd64`,
+    name: `${name}-linux-amd64`,
     data: fs.readFileSync(name) as any,
   })
 }
