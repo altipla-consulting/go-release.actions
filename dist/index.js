@@ -9803,16 +9803,9 @@ async function run() {
         owner: event.repository.owner.login,
         repo: event.repository.name,
         release_id: event.release.id,
-        name: `${name}_${event.release.tag_name}_linux_amd64`,
+        name: `${name}-linux-amd64`,
         data: fs__WEBPACK_IMPORTED_MODULE_0__.readFileSync(name),
     });
-    // await octokit.request({
-    //   method: 'POST',
-    //   url: event.release.upload_url,
-    //   headers: { 'Content-Type': 'application/octet-stream' },
-    //   data: fs.readFileSync(name, 'binary'),
-    //   name: `${name}_${event.release.tag_name}_linux_amd64`,
-    // })
 }
 async function main() {
     try {
